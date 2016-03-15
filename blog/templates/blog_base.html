@@ -2,7 +2,6 @@
 {% load staticfiles %}
 {% block container %}
 <div class="row">
-
   <div class="col-md-2 hidden-xs hidden-sm" id="sidebar-wrapper">
 
     <div class="panel panel-default">
@@ -52,7 +51,7 @@
   <div class="col-md-10" id="content-wrapper">
     {% block blog_content %}
     {% endblock blog_content %}
-    <hr />
+    <article>
     <p class="lead">What to read next?</p>
     <hr />
     <div class="row">
@@ -101,7 +100,7 @@
         </div>
       </div>
     </div>
-
+    </article>
   </div>
 </div>
 {% endblock container %}
