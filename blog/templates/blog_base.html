@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block container %}
+<div class="row">
+
+  <div class="col-md-2 hidden-xs hidden-sm" id="sidebar-wrapper">
+
+    <div class="panel panel-default">
+      <img class="img-responsive" src="{% static 'img/img-placehold.png' %}" alt="">
+      <div class="button-group">
+        <a>
+          <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+        </a>
+        <a>
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </a>
+      </div>
+      <hr />
+      <div class="nav">
+        <a>
+          <img class="img-responsive" src="{% static 'img/icon-placehold.png' %}" alt="">
+          Nav 1
+        </a>
+        <a>
+          <img class="img-responsive" src="{% static 'img/icon-placehold.png' %}" alt="">
+          Nav 2
+        </a>
+        <a>
+          <img class="img-responsive" src="{% static 'img/icon-placehold.png' %}" alt="">
+          Nav 3
+        </a>
+        <a>
+          <img class="img-responsive" src="{% static 'img/icon-placehold.png' %}" alt="">
+          Nav 4
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-md-10" id="content-wrapper">
+    {% block blog_content %}
+    {% endblock blog_content %}
+  </div>
+</div>
+{% endblock container %}
