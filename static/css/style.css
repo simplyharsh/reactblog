@@ -5,3 +5,32 @@ body {
 footer {
     margin: 50px 0;
 }
+
+#sidebar-wrapper {
+    min-height: 500px;
+}
+
+@media (max-width: 772px) {
+    img.bloghero {
+        width: 80%;
+    }
+}
+
+@media (min-width: 992px) {
+    img.bloghero {
+        width: 84%;
+    }
+}
+
+@media (min-width: 1200px) {
+    img.bloghero {
+        width: 100%;
+    }
+}
+
+#sidebar-wrapper .button-group a {
+    width: 48%;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+}
