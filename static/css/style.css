@@ -2,15 +2,29 @@ body {
     font-size: 14px;
     font-weight: 300;
     line-height: 1.6em;
-    color: #656565;
+    color: #000;
     padding-top: 70px;
+    background-color: #222;
 }
 
 footer {
     padding-top: 50px;
     padding-bottom: 50px;
     color: #99979c;
-    background-color: #2a2730;
+    background-color: #fff;
+}
+
+.navbar-inverse {
+    background-color: #fff;
+    border-color: #080808;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #000;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #000;
 }
 
 #sidebar-wrapper .user-img {
@@ -41,7 +55,14 @@ footer {
 }
 
 #content-wrapper {
-    padding: 10px;
+    padding: 15px;
+    padding-top: 0px;
+}
+
+#content-wrapper article {
+    padding: 15px;
+    background-color: #fff;
+    margin-bottom: 20px;
 }
 
 #content-wrapper .blog-body {
@@ -53,8 +74,18 @@ footer {
     float: right;
     margin: 0px 0px 10px 15px;
 }
+/*blog detail*/
+.blog-detail-wrapper {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+}
 
 /*blog list*/
+article .post-heading h3 {
+    margin-top: 0px;
+}
+
 article .post-heading h3 a {
     font-weight: 700;
     color: #353535;
