@@ -12,6 +12,9 @@ var ArticleDetailWrapper = React.createClass({
       type: 'get',
       success: function (data) {
         sui.setState(data);
+      },
+      error: function (xhr) {
+        sui.setState({});
       }
     });
   },
@@ -28,6 +31,19 @@ var ArticleDetailWrapper = React.createClass({
   render: function () {
     var slug = this.props.slug;
     var article = this.state;
+    if ($.isEmptyObject({})) {
+      return (
+    <div className="panel panel-danger" id="placeholder-anim">
+      <div className="panel-heading">
+        <h3 className="panel-title">Oops!</h3>
+      </div>
+      <div className="panel-body">
+        Oops! Cannot find that Article. Please <a href="/articles/" onClick={ this.onReturn }>Return to Article List</a>.
+      </div>
+    </div>
+      )
+    }
+    console.log(11, article);
     var tags_display = ''
     var tags_str = article.tags;
     if (tags_str) {

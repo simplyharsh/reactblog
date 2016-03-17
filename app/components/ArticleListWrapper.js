@@ -61,6 +61,18 @@ var ArticleListWrapper = React.createClass({
 
   render: function () {
     var article_items = this.state.article_items;
+    if ($.isEmptyObject({})) {
+      return (
+    <div className="panel panel-danger" id="placeholder-anim">
+      <div className="panel-heading">
+        <h3 className="panel-title">Oops!</h3>
+      </div>
+      <div className="panel-body">
+        We do not have any <strong>Article</strong> for you to read at this moment. I am afraid, I have to ask you to visit later. But please do come back.
+      </div>
+    </div>
+      )
+    }
     var next = this.state.next;
     var prev = this.state.previous;
 
