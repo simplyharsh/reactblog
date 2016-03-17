@@ -39,7 +39,7 @@ class ArticleListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ('id', 'title', 'slug', 'author_name', 'body', 'hero', 'publication_date')
+        fields = ('id', 'title', 'slug', 'author_name', 'body', 'hero', 'publication_date', 'tags')
 
 
 class ArticleSerializer(ArticleListSerializer):
@@ -57,7 +57,7 @@ class ArticleSerializer(ArticleListSerializer):
 
     class Meta:
         model = Article
-        fields = ('id', 'title', 'slug', 'author_name', 'body', 'hero', 'publication_date', 'image')
+        fields = ('id', 'title', 'slug', 'author_name', 'body', 'hero', 'publication_date', 'image', 'tags')
 
 
 class ArticleListPagination(PageNumberPagination):

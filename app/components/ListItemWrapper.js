@@ -10,6 +10,17 @@ var ListItemWrapper = React.createClass({
     var article = this.props.article;
     var article_url = "/article/"+article.slug;
     this.article_url = article_url;
+    var tags_display = ''
+    var tags, tags_str = article.tags;
+    if (tags_str) {
+      tags = tags_str.split(', ');
+      if (tags.length >= 3) {
+        tags_display = <li><span className="glyphicon glyphicon-tags"></span><a href="#">{tags.length} Tags</a></li>
+      } else {
+        tags_display = <li><span className="glyphicon glyphicon-tags"></span>{ tags_str }</li>
+      }
+    }
+
     return (
 <article>
   <div className="blog-list-header">
@@ -28,7 +39,7 @@ var ListItemWrapper = React.createClass({
       <li><span className="glyphicon glyphicon-calendar"></span>{ article.publication_date }</li>
       <li><span className="glyphicon glyphicon-user"></span>{ article.author_name }</li>
       <li><span className="glyphicon glyphicon-folder-open"></span>{ article.category_name || 'Uncategorized' }</li>
-      <li><span className="glyphicon glyphicon-tags"></span><a href="#">4 Tags</a></li>
+      { tags_display }
     </ul>
     <a href={article_url} className="read-this" onClick={ this.onReadDetail }><span className="glyphicon glyphicon-menu-right"></span>Read This Article</a>
   </div>

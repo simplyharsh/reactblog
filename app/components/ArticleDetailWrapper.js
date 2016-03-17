@@ -28,6 +28,11 @@ var ArticleDetailWrapper = React.createClass({
   render: function () {
     var slug = this.props.slug;
     var article = this.state;
+    var tags_display = ''
+    var tags_str = article.tags;
+    if (tags_str) {
+      tags_display = <li><span className="glyphicon glyphicon-tags"></span>{ tags_str }</li>;
+    }
     return (
 <div>
 <div className="blog-detail-wrapper">
@@ -36,8 +41,14 @@ var ArticleDetailWrapper = React.createClass({
     <hr />
   </div>
   <h1>{ article.title }</h1>
-  <p>{ article.publication_date } | <a>{ article.author_name }</a></p>
-
+  <div className="blog-list-footer">
+  <ul className="meta-post">
+    <li><span className="glyphicon glyphicon-calendar"></span>{ article.publication_date }</li>
+    <li><span className="glyphicon glyphicon-user"></span>{ article.author_name }</li>
+    <li><span className="glyphicon glyphicon-folder-open"></span>{ article.category_name || 'Uncategorized' }</li>
+    { tags_display }
+  </ul>
+  </div>
   <div className="blog-hero">
     <img className="img-responsive" src={ article.hero } alt="" />
   </div>
