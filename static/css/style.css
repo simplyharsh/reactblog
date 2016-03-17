@@ -180,3 +180,23 @@ article .post-heading h3 a {
     margin-top: 250px;
     margin-bottom: 250px;
 }
+
+/* Random Article */
+.random-article {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: block;
+    padding: 4px;
+    margin: 20px 5px;
+    line-height: 1.42857143;
+    background-color: #fff;
+}
+.random-article .img-div {
+    background-color: #ccc;
+}
+
+.random-article .img-div img.img-responsive {
+    width: 100px;
+    margin: auto;
+    height: 100px;
+}

@@ -46,8 +46,8 @@ var ArticleDetailWrapper = React.createClass({
     { article.body }
   </div>
 </div>
-        <RandomArticlesWrapper slug={slug} />
-        </div>
+<RandomArticlesWrapper slug={slug} />
+</div>
     )
   }
 
