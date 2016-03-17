@@ -3,10 +3,10 @@ Router.config({ mode: 'history'});
 
 // adding routes
 Router
-  .add(/articles/, function() {
+  .add(/articles$/, function() {
     BlogReactor.render_blog_list();
   })
-  .add(/article\/(.*)/, function() {
+  .add(/article\/(.*)$/, function() {
     BlogReactor.render_blog_detail();
   })
   .add(function() {
