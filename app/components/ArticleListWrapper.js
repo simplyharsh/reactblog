@@ -3,13 +3,20 @@ var ListItemWrapper = require('./ListItemWrapper');
 var ArticleListWrapper = React.createClass({
   getInitialState: function () {
     return {
-      'article_items': [{'slug': 'a', 'id': 1}, {'slug': 'b', 'id': 2}]
+      'article_items': []
     }
   },
 
   componentDidMount: function() {
-    this.serverRequest = $.get('/api/articles/', function (result) {
-
+    var sui = this;
+    sui.serverRequest = $.ajax({
+      url: '/api/articles/',
+      type: 'get',
+      success: function (data) {
+        sui.setState({
+          'article_items': data
+        })
+      }
     });
   },
 
