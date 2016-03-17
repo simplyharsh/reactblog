@@ -7,7 +7,7 @@ Router
     BlogReactor.render_blog_list();
   })
   .add(/article\/(.*)$/, function() {
-    BlogReactor.render_blog_detail();
+    BlogReactor.render_blog_detail.apply(BlogReactor, arguments);
   })
   .add(function() {
     Router.redirect('/articles', true);
