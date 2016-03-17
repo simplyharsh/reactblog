@@ -63,7 +63,6 @@ var ArticleListWrapper = React.createClass({
     var article_items = this.state.article_items;
     var next = this.state.next;
     var prev = this.state.previous;
-    console.log('a', this.props.page);
 
     var next_link = '', prev_link = '', next_prev = '';
     if (next) {
