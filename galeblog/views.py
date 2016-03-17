@@ -15,5 +15,6 @@ class BaseHandler(View):
                    context_instance=RequestContext(self.request))
 
 class Home(BaseHandler):
-    def get(self, request):
-        return self.render_to_response('homepage.html')
+    def get(self, request, *args, **kwargs):
+        # For now our home will be redirecting to blog_home
+        return self.render_to_response('blog_base.html')
