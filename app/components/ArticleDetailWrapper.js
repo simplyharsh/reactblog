@@ -1,8 +1,8 @@
 var React = require('react');
 var RandomArticlesWrapper = require('./RandomArticlesWrapper');
 var ArticleDetailWrapper = React.createClass({
-  onReturn: function () {
-    console.log('aaa');
+  onReturn: function (e) {
+    e.preventDefault();
     Router.redirect('/articles/');
   },
 
@@ -13,7 +13,7 @@ var ArticleDetailWrapper = React.createClass({
 <div>
 <div className="blog-detail-wrapper">
   <div id="return-to-list">
-    <a href="javascript:void(0);" onClick={ this.onReturn }><span className="glyphicon glyphicon-menu-left"></span>Return to Article List</a>
+    <a href="/articles/" onClick={ this.onReturn }><span className="glyphicon glyphicon-menu-left"></span>Return to Article List</a>
     <hr />
   </div>
   <h1>Blog Title</h1>

@@ -5,10 +5,10 @@ var ArticleListWrapper = require('./components/ArticleListWrapper');
 var ArticleDetailWrapper = require('./components/ArticleDetailWrapper');
 
 var BlogReactor = {
-  render_blog_list: function (blog_list) {
-    var article_items = [{'slug': 'a', 'id': 1}, {'slug': 'b', 'id': 2}];
+  render_blog_list: function (page) {
+    var page = page || 1;
     ReactDOM.render(
-        <ArticleListWrapper article_items={article_items} />,
+        <ArticleListWrapper page={page} />,
       document.getElementById('content-wrapper')
     );
   },
