@@ -40,10 +40,33 @@ class ArticleItemSerializer(serializers.ModelSerializer):
         model = Article
         fields = ('id', 'title', 'slug', 'author_name', 'body', 'hero', 'publication_date')
 
-class ArticleViewSet(viewsets.ModelViewSet):
+class ArticleSerializer(ArticleItemSerializer):
+    image = serializers.SerializerMethodField()
+
+    def get_body(self, obj):
+        return obj.body
+
+    def get_image(self, obj):
+        if obj.blogimage:
+            name = obj.blogimage.name.split('/')[-1]
+            return static("blogimage/"+name)
+        else:
+            return ''
+
+    class Meta:
+        model = Article
+        fields = ('id', 'title', 'slug', 'author_name', 'body', 'hero', 'publication_date', 'image')
+
+
+class ArticleItemViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleItemSerializer
 
+class ArticleViewSet(ArticleItemViewSet):
+    serializer_class = ArticleSerializer
+    lookup_field = 'slug'
+
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
-router.register(r'articles', ArticleViewSet)
+router.register(r'article', ArticleViewSet)
+router.register(r'articles', ArticleItemViewSet)
