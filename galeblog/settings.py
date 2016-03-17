@@ -137,5 +137,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],
     'DATE_FORMAT': '%d/%m/%Y',
-    'DATETIME_FORMAT': '%d %b, %Y at %I:%M %p'
+    'DATETIME_FORMAT': '%d %b, %Y at %I:%M %p',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination'
 }

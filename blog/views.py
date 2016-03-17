@@ -4,6 +4,7 @@ from django.shortcuts import render
 from .models import Blog as Article
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
+from rest_framework.pagination import PageNumberPagination
 
 from django.contrib.staticfiles.templatetags.staticfiles import static
 
@@ -17,7 +18,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-class ArticleItemSerializer(serializers.ModelSerializer):
+class ArticleListSerializer(serializers.ModelSerializer):
     author_name = serializers.SerializerMethodField()
     body = serializers.SerializerMethodField()
     hero = serializers.SerializerMethodField()
@@ -40,7 +41,8 @@ class ArticleItemSerializer(serializers.ModelSerializer):
         model = Article
         fields = ('id', 'title', 'slug', 'author_name', 'body', 'hero', 'publication_date')
 
-class ArticleSerializer(ArticleItemSerializer):
+
+class ArticleSerializer(ArticleListSerializer):
     image = serializers.SerializerMethodField()
 
     def get_body(self, obj):
@@ -58,20 +60,39 @@ class ArticleSerializer(ArticleItemSerializer):
         fields = ('id', 'title', 'slug', 'author_name', 'body', 'hero', 'publication_date', 'image')
 
 
-class ArticleItemViewSet(viewsets.ModelViewSet):
-    queryset = Article.objects.all()
-    serializer_class = ArticleItemSerializer
+class ArticleListPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 20
 
-class ArticleViewSet(ArticleItemViewSet):
+    def get_next_link(self):
+        if not self.page.has_next():
+            return None
+        return self.page.next_page_number()
+
+    def get_previous_link(self):
+        if not self.page.has_previous():
+            return None
+
+        return self.page.previous_page_number()
+
+
+class ArticleListViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleListSerializer
+    pagination_class = ArticleListPagination
+
+
+class ArticleViewSet(ArticleListViewSet):
     serializer_class = ArticleSerializer
     lookup_field = 'slug'
 
 class RandomArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.order_by('?')[:5]
-    serializer_class = ArticleItemSerializer
+    serializer_class = ArticleListSerializer
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'article', ArticleViewSet)
-router.register(r'articles', ArticleItemViewSet)
+router.register(r'articles', ArticleListViewSet)
 router.register(r'random_articles', RandomArticleViewSet)
