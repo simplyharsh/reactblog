@@ -1,6 +1,10 @@
 var React = require('react');
 var RandomArticlesWrapper = require('./RandomArticlesWrapper');
-var BlogDetailWrapper = React.createClass({
+var ArticleDetailWrapper = React.createClass({
+  onReturn: function () {
+    console.log('aaa');
+    Router.redirect('/articles/');
+  },
 
   render: function () {
     var slug = this.props.slug;
@@ -8,6 +12,10 @@ var BlogDetailWrapper = React.createClass({
     return (
 <div>
 <div className="blog-detail-wrapper">
+  <div id="return-to-list">
+    <a href="javascript:void(0);" onClick={ this.onReturn }><span className="glyphicon glyphicon-menu-left"></span>Return to Article List</a>
+    <hr />
+  </div>
   <h1>Blog Title</h1>
   <p className="lead">
     Thursday, September 18th, 2014 | <a href="#">Jasmine Moir</a>
@@ -32,4 +40,4 @@ var BlogDetailWrapper = React.createClass({
 
 });
 
-module.exports = BlogDetailWrapper;
+module.exports = ArticleDetailWrapper;
