@@ -1,3 +1,49 @@
 from django.shortcuts import render
 
 # Create your views here.
+from .models import Blog as Article
+from django.contrib.auth.models import User
+from rest_framework import routers, serializers, viewsets
+
+from django.contrib.staticfiles.templatetags.staticfiles import static
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'username', 'email', 'is_staff')
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class ArticleItemSerializer(serializers.ModelSerializer):
+    author_name = serializers.SerializerMethodField()
+    body = serializers.SerializerMethodField()
+    hero = serializers.SerializerMethodField()
+
+    def get_author_name(self, obj):
+        obj = obj.author
+        name = obj.first_name
+        if name and obj.last_name:
+            name = "%s %s" % (name, obj.last_name)
+        return name or obj.username;
+
+    def get_body(self, obj):
+        return obj.body[:200]
+
+    def get_hero(self, obj):
+        name = obj.bloghero.name.split('/')[-1]
+        return static("bloghero/"+name)
+
+    class Meta:
+        model = Article
+        fields = ('id', 'title', 'slug', 'author_name', 'body', 'hero', 'publication_date')
+
+class ArticleViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleItemSerializer
+
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'articles', ArticleViewSet)
