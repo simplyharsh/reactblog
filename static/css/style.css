@@ -91,6 +91,15 @@ footer {
     margin-right: 5px;
 }
 
+.blog-detail-wrapper .blog-hero {
+    background-color: #ccc;
+}
+
+.blog-detail-wrapper .blog-hero img {
+    height: 300px;
+    margin: auto;
+}
+
 /*blog list*/
 article .post-heading h3 {
     margin-top: 0px;
@@ -106,7 +115,7 @@ article .post-heading h3 a {
 }
 
 .blog-list-header .hero-div{
-    text-align: center;
+    background-color: #ccc;
 }
 
 .blog-list-header .hero-div img {
