@@ -1,20 +1,20 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var BlogListWrapper = require('./components/BlogListWrapper');
-var BlogDetailWrapper = require('./components/BlogDetailWrapper');
+var ArticleListWrapper = require('./components/ArticleListWrapper');
+var ArticleDetailWrapper = require('./components/ArticleDetailWrapper');
 
 var BlogReactor = {
-  render_blog_detail: function (blog_slug) {
+  render_blog_list: function (blog_list) {
+    var article_items = [{'slug': 'a', 'id': 1}, {'slug': 'b', 'id': 2}];
     ReactDOM.render(
-        <BlogDetailWrapper slug={blog_slug} />,
+        <ArticleListWrapper article_items={article_items} />,
       document.getElementById('content-wrapper')
     );
   },
-  render_blog_list: function (blog_list) {
-    var blog_items = [{'id': 'a'}, {'id': 'b'}];
+  render_blog_detail: function (blog_slug) {
     ReactDOM.render(
-        <BlogListWrapper blog_items={blog_items} />,
+        <ArticleDetailWrapper slug={blog_slug} />,
       document.getElementById('content-wrapper')
     );
   }
