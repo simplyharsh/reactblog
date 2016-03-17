@@ -10,7 +10,7 @@ Router
     BlogReactor.render_blog_detail();
   })
   .add(function() {
-    console.log('default');
+    Router.redirect('/articles', true);
   })
   .handle()
   .listen();
