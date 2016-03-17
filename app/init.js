@@ -8,6 +8,7 @@ var BlogReactor = {
   render_blog_list: function (page) {
     var page = page || 1;
     var wrapper = document.getElementById('content-wrapper');
+    wrapper.innerHTML = '';
     $('html, body').animate({ scrollTop: 0 }, 'fast');
     ReactDOM.render(
         <ArticleListWrapper page={page} />,
