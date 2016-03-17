@@ -73,12 +73,22 @@ footer {
 #content-wrapper .blog-img {
     float: right;
     margin: 0px 0px 10px 15px;
+    min-width: 200px;
+    min-height: 200px;
 }
 /*blog detail*/
 .blog-detail-wrapper {
     background-color: #fff;
     padding: 15px;
     margin-bottom: 20px;
+}
+
+.blog-detail-wrapper div#return-to-list {
+    text-align: right;
+}
+
+.blog-detail-wrapper div#return-to-list span.glyphicon {
+    margin-right: 5px;
 }
 
 /*blog list*/
@@ -135,7 +145,7 @@ article .post-heading h3 a {
     float: right;
 }
 
-.read-this span {
+.read-this span.glyphicon {
     float: right;
     margin-top: 3px;
     margin-left: 5px;
