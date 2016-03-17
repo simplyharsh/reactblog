@@ -66,7 +66,12 @@ class ArticleViewSet(ArticleItemViewSet):
     serializer_class = ArticleSerializer
     lookup_field = 'slug'
 
+class RandomArticleViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.order_by('?')[:5]
+    serializer_class = ArticleItemSerializer
+
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'article', ArticleViewSet)
 router.register(r'articles', ArticleItemViewSet)
+router.register(r'random_articles', RandomArticleViewSet)
