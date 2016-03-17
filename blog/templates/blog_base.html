@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+
+{% block extra_scripts %}
+<script src="{% static 'js/application.js' %}"></script>
+{% endblock %}
+
 {% block container %}
 <div class="row">
   <div class="col-md-2 hidden-xs hidden-sm" id="sidebar-wrapper">
