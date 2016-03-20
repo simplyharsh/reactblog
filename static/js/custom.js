@@ -6,6 +6,18 @@ var vm = new Vue({
     'view': 'default',
     'slug': ''
   },
+  methods: {
+    'load': function () {
+      if (vm.view == 'detail') {
+        this.load_detail.apply(this, arguments);
+      } else if (vm.view == 'list') {
+        this.load_list.apply(this, arguments);
+      }
+    },
+    'load_detail': function (slug) {
+      console.log('loading detail page for ', slug);
+    }
+  }
 });
 
 
@@ -19,6 +31,7 @@ var BlogReactor = {
     console.log('arendering detail', blog_slug);
     vm.view = 'detail';
     vm.slug = blog_slug;
+    vm.load(blog_slug);
   }
 }
 
