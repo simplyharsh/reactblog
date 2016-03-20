@@ -1,4 +1,5 @@
 Vue.config.delimiters = ['@{', '}']
+Vue.config.unsafeDelimiters = ['@{!', '!}']
 
 var vm = new Vue({
   el: '#content-wrapper',
@@ -24,7 +25,6 @@ var vm = new Vue({
         url: '/api/article/'+slug+'/',
         type: 'get',
         success: function (data) {
-          console.log(data)
           self.json = data;
         }
       });
