@@ -26,7 +26,14 @@
       </div>
     </template>
     <template id="list-view" v-if="view=='list'">
-      <p>Article List</p>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Article List</h3>
+        </div>
+        <div class="panel-body">
+          Please wait while we load your view.
+        </div>
+      </div>
     </template>
     <template id="default-view" v-if="!(view=='list' || view=='detail')">
       <div class="panel panel-info">
