@@ -31,11 +31,16 @@
           <h3 class="panel-title">Article List</h3>
         </div>
         <div class="panel-body">
-          <ol>
-            <li v-for="item in items">
-              <pre style="overflow:initial;">@{ item | json 4 }</pre>
-            </li>
-          </ol>
+          <template v-if="!!items.length">
+            <ol>
+              <li v-for="item in items">
+                <pre style="overflow:initial;">@{ item | json 4 }</pre>
+              </li>
+            </ol>
+          </template>
+          <template v-else>
+            Found no articles.
+          </template>
         </div>
       </div>
     </template>
