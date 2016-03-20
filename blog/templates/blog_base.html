@@ -2,70 +2,14 @@
 {% load staticfiles %}
 
 {% block extra_scripts %}
-<script src="{% static 'js/application.js' %}"></script>
+<script src="{% static 'js/vue.js' %}"></script>
 <script src="{% static 'js/router.js' %}"></script>
 <script src="{% static 'js/custom.js' %}"></script>
 {% endblock %}
 
 {% block container %}
 <div class="row">
-  <div class="col-md-2 hidden-xs hidden-sm" id="sidebar-wrapper">
-
-    <div class="panel panel-default">
-      <img class="user-img img-responsive" src="{% static 'img/user1.jpg' %}" alt="" />
-      <ul class="button-group">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-align-justify"></span></a>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-search"></span></a>
-            <ul class="dropdown-menu" style="padding:12px;">
-              <form class="form-inline">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search for...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"> <span class="glyphicon glyphicon-search"></span></button>
-                  </span>
-                </div>
-              </form>
-            </ul>
-          </li>
-        </ul>
-      <hr />
-      <div class="nav">
-        <a>
-          <img class="img-responsive" src="{% static 'img/icon-placehold.png' %}" alt="">
-          Nav 1
-        </a>
-        <a>
-          <img class="img-responsive" src="{% static 'img/icon-placehold.png' %}" alt="">
-          Nav 2
-        </a>
-        <a>
-          <img class="img-responsive" src="{% static 'img/icon-placehold.png' %}" alt="">
-          Nav 3
-        </a>
-        <a>
-          <img class="img-responsive" src="{% static 'img/icon-placehold.png' %}" alt="">
-          Nav 4
-        </a>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="col-md-10" id="content-wrapper">
-    {% block blog_content %}
-    <div class="panel panel-default" id="placeholder-anim">
-      <div class="panel-heading">
-        <h3 class="panel-title">Initializing...</h3>
-      </div>
-      <div class="panel-body">
-        Welcome!
-      </div>
-    </div>
-    {% endblock blog_content %}
+  <div class="col-md-12" id="content-wrapper">
   </div>
 </div>
 {% endblock container %}
