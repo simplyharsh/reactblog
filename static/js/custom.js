@@ -4,7 +4,8 @@ var vm = new Vue({
   el: '#content-wrapper',
   data: {
     'view': 'default',
-    'slug': ''
+    'slug': '',
+    'json': ''
   },
   methods: {
     'load_list': function (page) {
@@ -18,6 +19,16 @@ var vm = new Vue({
       var self = this;
       self.view = 'detail';
       self.slug = slug;
+
+      $.ajax({
+        url: '/api/article/'+slug+'/',
+        type: 'get',
+        success: function (data) {
+          console.log(data)
+          self.json = data;
+        }
+      });
+
     },
     'return_to_list': function () {
       Router.redirect('/articles/');
