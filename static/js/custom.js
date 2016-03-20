@@ -7,15 +7,20 @@ var vm = new Vue({
     'slug': ''
   },
   methods: {
-    'load': function () {
-      if (vm.view == 'detail') {
-        this.load_detail.apply(this, arguments);
-      } else if (vm.view == 'list') {
-        this.load_list.apply(this, arguments);
-      }
+    'load_list': function (page) {
+      page = page || 1;
+      var self = this;
+      console.log('loading list page ', page);
+      self.view = 'list';
     },
     'load_detail': function (slug) {
       console.log('loading detail page for ', slug);
+      var self = this;
+      self.view = 'detail';
+      self.slug = slug;
+    },
+    'return_to_list': function () {
+      Router.redirect('/articles/');
     }
   }
 });
@@ -25,13 +30,11 @@ var BlogReactor = {
   render_blog_list: function (page) {
     var page = page || 1;
     console.log('rendering list', page);
-    vm.view = 'list';
+    vm.load_list(page);
   },
   render_blog_detail: function (blog_slug) {
     console.log('arendering detail', blog_slug);
-    vm.view = 'detail';
-    vm.slug = blog_slug;
-    vm.load(blog_slug);
+    vm.load_detail(blog_slug);
   }
 }
 
