@@ -3,7 +3,7 @@ var ListItemWrapper = require('./ListItemWrapper');
 var ArticleListWrapper = React.createClass({
   getInitialState: function () {
     return {
-      'article_items': []
+      'article_items': [null]
     }
   },
 
@@ -69,6 +69,18 @@ var ArticleListWrapper = React.createClass({
       </div>
       <div className="panel-body">
         We do not have any <strong>Article</strong> for you to read at this moment. I am afraid, I have to ask you to visit later. But please do come back.
+      </div>
+    </div>
+      )
+    }
+    if (!article_items[0]) {
+      return (
+    <div className="panel panel-default" id="placeholder-anim">
+      <div className="panel-heading">
+        <h3 className="panel-title">Initializing...</h3>
+      </div>
+      <div className="panel-body">
+        Please wait...
       </div>
     </div>
       )
