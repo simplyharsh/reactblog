@@ -2,7 +2,7 @@ var React = require('react');
 var RandomArticlesWrapper = require('./RandomArticlesWrapper');
 var ArticleDetailWrapper = React.createClass({
   getInitialState: function () {
-    return {}
+    return {'id': ''};
   },
 
   componentDidMount: function() {
@@ -31,7 +31,7 @@ var ArticleDetailWrapper = React.createClass({
   render: function () {
     var slug = this.props.slug;
     var article = this.state;
-    if ($.isEmptyObject({})) {
+    if ($.isEmptyObject(article)) {
       return (
     <div className="panel panel-danger" id="placeholder-anim">
       <div className="panel-heading">
@@ -43,7 +43,18 @@ var ArticleDetailWrapper = React.createClass({
     </div>
       )
     }
-    console.log(11, article);
+    if (!article.id) {
+      return (
+    <div className="panel panel-default" id="placeholder-anim">
+      <div className="panel-heading">
+        <h3 className="panel-title">Initializing...</h3>
+      </div>
+      <div className="panel-body">
+        Please wait...
+      </div>
+    </div>
+      )
+    }
     var tags_display = ''
     var tags_str = article.tags;
     if (tags_str) {
