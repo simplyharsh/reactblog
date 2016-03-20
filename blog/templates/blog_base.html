@@ -11,7 +11,14 @@
 <div class="row">
   <div class="col-md-12" id="content-wrapper">
     <template id="detail-view" v-if="view=='detail'">
-      <p>Article Detail for @{slug}</p>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Article Detail for @{ slug }</h3>
+        </div>
+        <div class="panel-body">
+          JSON here
+        </div>
+      </div>
     </template>
     <template id="list-view" v-if="view=='list'">
       <p>Article List</p>
