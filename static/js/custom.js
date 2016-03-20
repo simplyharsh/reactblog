@@ -12,9 +12,9 @@ var vm = new Vue({
   },
   methods: {
     'on_search': function () {
-      console.log('search', this.search_key);
+      this.load_list(1, this.search_key)
     },
-    'load_list': function (page) {
+    'load_list': function (page, search) {
       page = Number(page) || 1;
       var self = this;
       console.log('loading list page ', page);
@@ -22,9 +22,13 @@ var vm = new Vue({
 
       var url;
       if (page <= 1) {
-        url = '/api/articles/';
+        url = '/api/articles/?page=1';
       } else {
         url = '/api/articles/?page='+page;
+      }
+
+      if (search) {
+        url = url + '&q=' + search;
       }
 
       $.ajax({
@@ -53,7 +57,10 @@ var vm = new Vue({
     },
     'return_to_list': function () {
       Router.redirect('/articles/');
-    }
+    },
+    'on_detail': function (slug) {
+      Router.redirect('/article/'+slug+'/');
+    },
   }
 });
 
