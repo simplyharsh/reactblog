@@ -1,10 +1,12 @@
+import re
+from django.db.models import Q
 from django.shortcuts import render
 
 # Create your views here.
 from .models import Blog as Article
 from django.contrib.auth.models import User
-from rest_framework import routers, serializers, viewsets
 from rest_framework.pagination import PageNumberPagination
+from rest_framework import routers, serializers, viewsets, generics
 
 from django.contrib.staticfiles.templatetags.staticfiles import static
 
@@ -81,6 +83,20 @@ class ArticleListViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleListSerializer
     pagination_class = ArticleListPagination
+
+    def get_queryset(self):
+        search_key = self.request.query_params.get('q') or ''
+        if search_key:
+            findterms=re.compile(r'"([^"]+)"|(\S+)').findall
+            normspace=re.compile(r'\s{2,}').sub
+            query = None
+            for term in [normspace(' ', t[1].strip()) for t in findterms(search_key)]:
+                if query is None:
+                    query = Q(title__icontains=term)
+                else:
+                    query = query | Q(title__icontains=term)
+            return self.queryset.filter(query)
+        return self.queryset
 
 
 class ArticleViewSet(ArticleListViewSet):
