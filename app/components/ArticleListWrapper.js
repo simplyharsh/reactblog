@@ -61,7 +61,7 @@ var ArticleListWrapper = React.createClass({
 
   render: function () {
     var article_items = this.state.article_items;
-    if ($.isEmptyObject({})) {
+    if ($.isEmptyObject(article_items)) {
       return (
     <div className="panel panel-danger" id="placeholder-anim">
       <div className="panel-heading">
