@@ -3,7 +3,7 @@ Vue.config.delimiters = ['@{', '}']
 var vm = new Vue({
   el: '#content-wrapper',
   data: {
-    'view': 'detail_view'
+    'view': 'detail'
   },
 });
 

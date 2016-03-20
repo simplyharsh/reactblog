@@ -10,7 +10,12 @@
 {% block container %}
 <div class="row">
   <div class="col-md-12" id="content-wrapper">
-    @{view}
+    <template id="detail-view" v-if="view=='detail'">
+      <p>Article Detail</p>
+    </template>
+    <template id="list-view" v-if="view=='list'">
+      <p>Article List</p>
+    </template>
   </div>
 </div>
 {% endblock container %}
