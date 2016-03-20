@@ -17,8 +17,8 @@ var BlogReactor = {
   },
   render_blog_detail: function (blog_slug) {
     console.log('arendering detail', blog_slug);
-    // vm.view = 'detail';
-    // vm.slug = blog_slug;
+    vm.view = 'detail';
+    vm.slug = blog_slug;
   }
 }
 
