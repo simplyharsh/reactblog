@@ -1,3 +1,13 @@
+Vue.config.delimiters = ['@{', '}']
+
+var vm = new Vue({
+  el: '#content-wrapper',
+  data: {
+    'view': 'detail_view'
+  },
+});
+
+
 var BlogReactor = {
   render_blog_list: function (page) {
     var page = page || 1;
