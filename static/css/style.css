@@ -210,3 +210,7 @@ article .post-heading h3 a {
     margin: auto;
     height: 100px;
 }
+
+.search-form .form-group {
+    margin-bottom: 0px;
+}

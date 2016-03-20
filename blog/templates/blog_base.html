@@ -26,6 +26,18 @@
       </div>
     </template>
     <template id="list-view" v-if="view=='list'">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="search-form form-group">
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="search-inp" placeholder="Search Article" v-model="search_key">
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-info" v-on:click.prevent="on_search">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="panel panel-info">
         <div class="panel-heading">
           <h3 class="panel-title">Article List</h3>

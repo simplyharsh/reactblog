@@ -7,9 +7,13 @@ var vm = new Vue({
     'view': 'default',
     'slug': '',
     'json': '',
-    'items': ''
+    'items': '',
+    'search_key': ''
   },
   methods: {
+    'on_search': function () {
+      console.log('search', this.search_key);
+    },
     'load_list': function (page) {
       page = Number(page) || 1;
       var self = this;
@@ -27,7 +31,6 @@ var vm = new Vue({
         url: url,
         type: 'get',
         success: function (data) {
-          console.log(data);
           self.items = data.results;
         }
       });
