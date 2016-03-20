@@ -11,6 +11,11 @@
 <div class="row">
   <div class="col-md-12" id="content-wrapper">
     <template id="detail-view" v-if="view=='detail'">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <a href="/articles/" v-on:click.prevent="return_to_list"><span class="glyphicon glyphicon-menu-left"></span>Return to Article List</a>
+        </div>
+      </div>
       <div class="panel panel-info">
         <div class="panel-heading">
           <h3 class="panel-title">Article Detail for [@{ slug }]</h3>
