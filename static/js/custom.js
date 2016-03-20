@@ -1,3 +1,13 @@
+var BlogReactor = {
+  render_blog_list: function (page) {
+    var page = page || 1;
+    console.log('rendering list', page);
+  },
+  render_blog_detail: function (blog_slug) {
+    console.log('arendering detail', blog_slug);
+  }
+}
+
 // setting up Router to use history api
 Router.config({ mode: 'history'});
 
