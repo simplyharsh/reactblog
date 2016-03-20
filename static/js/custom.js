@@ -6,14 +6,32 @@ var vm = new Vue({
   data: {
     'view': 'default',
     'slug': '',
-    'json': ''
+    'json': '',
+    'items': ''
   },
   methods: {
     'load_list': function (page) {
-      page = page || 1;
+      page = Number(page) || 1;
       var self = this;
       console.log('loading list page ', page);
       self.view = 'list';
+
+      var url;
+      if (page <= 1) {
+        url = '/api/articles/';
+      } else {
+        url = '/api/articles/?page='+page;
+      }
+
+      $.ajax({
+        url: url,
+        type: 'get',
+        success: function (data) {
+          console.log(data);
+          self.items = data.results;
+        }
+      });
+
     },
     'load_detail': function (slug) {
       console.log('loading detail page for ', slug);
